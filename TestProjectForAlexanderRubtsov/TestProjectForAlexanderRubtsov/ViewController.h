@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SiSStudent.h"
+#import "SiSStudentDetails.h"
 
-@interface ViewController : UITableViewController
-
+@interface ViewController : UITableViewController 
 
 @end
 

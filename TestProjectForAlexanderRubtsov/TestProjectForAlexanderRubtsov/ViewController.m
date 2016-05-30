@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "SiSStudent.h"
 
-@interface ViewController ()
+@interface ViewController () <SiSStudentDetailsDelegate>
 
 @property (strong, nonatomic) NSMutableArray* students;
+@property (strong, nonatomic) SiSStudent* student;
 
 @end
 
@@ -46,6 +46,11 @@
         [self.students addObject:student];
     }
     
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - === ACTIONS ===
@@ -95,10 +100,19 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SiSStudent* student = [self.students objectAtIndex:indexPath.row];
-    SiSAddStudentViewController* vc = [[SiSAddStudentViewController alloc] init];
-    vc.student = student;
+    self.student = [self.students objectAtIndex:indexPath.row];
+    SiSStudentDetails* vc = [[SiSStudentDetails alloc] init];
+    vc.student = self.student;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - SiSStudentDetailsDelegate methods
+
+- (void) addStudentDetails:(SiSStudent*)student {
+    
+    self.student = student;
+    
+    [self.tableView reloadData];
 }
 
 @end
