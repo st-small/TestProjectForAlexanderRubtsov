@@ -23,17 +23,19 @@ static NSString* lastNameMale[] = {@"Абрамов", @"Петров", @"Сид�
 
 @implementation SiSStudent
 
-+ (SiSStudent*)createNewStudent {
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        self.firstName = firstNameMale[arc4random() % 25];
+        
+        self.lastName = lastNameMale[arc4random() % 25];
+        
+        self.grade = ((CGFloat)((arc4random() % 301) + 200)) / 100;
+    }
     
-    SiSStudent* student = [[SiSStudent alloc] init];
-    
-    student.firstName = firstNameMale[arc4random() % 25];
-    
-    student.lastName = lastNameMale[arc4random() % 25];
-    
-    student.grade = ((CGFloat)((arc4random() % 301) + 200)) / 100;
-    
-    return student;
+    return self;
 }
 
 @end

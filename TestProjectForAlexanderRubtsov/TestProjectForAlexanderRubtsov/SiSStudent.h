@@ -15,6 +15,4 @@
 @property (strong, nonatomic) NSString* lastName;
 @property (assign, nonatomic) CGFloat grade;
 
-+ (SiSStudent*)createNewStudent;
-
 @end
